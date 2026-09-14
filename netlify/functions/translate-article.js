@@ -3,7 +3,7 @@
 // translation. Uses Google's Gemini API (same free-tier key as the deep
 // grammar breakdown feature).
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const MAX_CHARS = 8000;
 
 const SYSTEM_PROMPT = `You are an expert English-to-Bangla literary translator.
@@ -17,6 +17,9 @@ Rules:
 4. Do not add explanations, notes, or commentary. Output ONLY the Bangla translation, nothing else -- no markdown, no English.`;
 
 function jsonResponse(statusCode, body) {
+  if (statusCode >= 400) {
+    console.error('[function error]', statusCode, JSON.stringify(body).slice(0, 1000));
+  }
   return {
     statusCode,
     headers: { 'Content-Type': 'application/json' },
