@@ -3,7 +3,7 @@
 // translation. Uses Google's Gemini API (same free-tier key as the deep
 // grammar breakdown feature).
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
 const MAX_CHARS = 8000;
 
 const SYSTEM_PROMPT = `You are an expert English-to-Bangla literary translator.
