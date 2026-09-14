@@ -17,7 +17,7 @@
 // prepositions were chosen (or omitted), and give a Bangla meaning -- all as
 // strict JSON that the front-end renders directly.
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const MAX_SENTENCES_PER_REQUEST = 6;
 
 const SYSTEM_PROMPT = `You are an expert English grammar teacher preparing material for a Bengali-speaking English learner using a reading app called Lexora.
@@ -71,6 +71,9 @@ CRITICAL RULES -- follow all of them exactly:
 6. Every "label_bn", "role_bn", "note_bn", "reason_bn", and "meaning_bn" value must be written in natural, clear Bangla.`;
 
 function jsonResponse(statusCode, body) {
+  if (statusCode >= 400) {
+    console.error('[function error]', statusCode, JSON.stringify(body).slice(0, 1000));
+  }
   return {
     statusCode,
     headers: { 'Content-Type': 'application/json' },
