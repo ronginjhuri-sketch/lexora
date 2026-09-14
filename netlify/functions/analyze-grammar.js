@@ -18,7 +18,7 @@
 // strict JSON that the front-end renders directly.
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
-const MAX_SENTENCES_PER_REQUEST = 6;
+const MAX_SENTENCES_PER_REQUEST = 4;
 
 const SYSTEM_PROMPT = `You are an expert English grammar teacher preparing material for a Bengali-speaking English learner using a reading app called Lexora.
 
@@ -132,7 +132,8 @@ exports.handler = async (event) => {
         generationConfig: {
           responseMimeType: 'application/json',
           maxOutputTokens: 8192,
-          temperature: 0.2
+          temperature: 0.2,
+          thinkingConfig: { thinkingLevel: 'low' }
         }
       })
     });
