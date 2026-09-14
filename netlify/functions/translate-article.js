@@ -70,7 +70,8 @@ exports.handler = async (event) => {
         generationConfig: {
           responseMimeType: 'text/plain',
           maxOutputTokens: 4096,
-          temperature: 0.4
+          temperature: 0.4,
+          thinkingConfig: { thinkingLevel: 'low' }
         }
       })
     });
