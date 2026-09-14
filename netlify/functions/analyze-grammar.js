@@ -17,7 +17,7 @@
 // prepositions were chosen (or omitted), and give a Bangla meaning -- all as
 // strict JSON that the front-end renders directly.
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
 const MAX_SENTENCES_PER_REQUEST = 6;
 
 const SYSTEM_PROMPT = `You are an expert English grammar teacher preparing material for a Bengali-speaking English learner using a reading app called Lexora.
